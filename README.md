@@ -8,3 +8,5 @@
 Here is the preview of this app: <a href="https://nextjs-walkthrough.vercel.app/ ">nextjs-walkthrough</a>
 
 The preview is connected to this repo.
+
+MongoDB is also required
