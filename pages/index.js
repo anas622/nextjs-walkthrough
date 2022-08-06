@@ -23,26 +23,15 @@ function HomePage(props) {
   return <MeetupList meetups={props.meetups} />;
 }
 
-export async function getServerSideProps(context) {
-  const req = context.req;
-  const res = context.res;
 
+//static generation during the build, and based on revalidate value
+export async function getStaticProps() {
   return {
     props: {
       meetups: DUMMY_MEETUPS,
     },
+    revalidate: 300 //the page will be regenerated statically on the server after this many seconds
   };
 }
-
-
-// static generation during the build, and based on revalidate value
-// export async function getStaticProps() {
-//   return {
-//     props: {
-//       meetups: DUMMY_MEETUPS,
-//     },
-//     revalidate: 300 //the page will be regenerated statically on the server after this many seconds
-//   };
-// }
 
 export default HomePage;
