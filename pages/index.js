@@ -1,7 +1,5 @@
 import MeetupList from "../components/meetups/MeetupList";
 
-
-
 const DUMMY_MEETUPS = [
   {
     id: "m1",
@@ -21,12 +19,19 @@ const DUMMY_MEETUPS = [
   },
 ];
 
-function HomePage() {
-  return (
+function HomePage(props) {
+  return <MeetupList meetups={props.meetups} />;
+}
 
-      <MeetupList meetups={DUMMY_MEETUPS} />
 
-  );
+// static generation during the build, and based on revalidate value
+export async function getStaticProps() {
+  return {
+    props: {
+      meetups: DUMMY_MEETUPS,
+    },
+    revalidate: 300 //the page will be regenerated statically on the server after this many seconds
+  };
 }
 
 export default HomePage;
