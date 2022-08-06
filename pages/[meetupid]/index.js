@@ -1,6 +1,6 @@
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 
-function MeetupDetails(props) {
+function MeetupDetails() {
   return (
     <MeetupDetail
       image="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg"
@@ -13,7 +13,7 @@ function MeetupDetails(props) {
 
 export async function getStaticPaths() {
   return {
-    fallback: false, 
+    fallback: false,
     paths: [
       {
         params: {
@@ -30,11 +30,15 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
+  // fetch data for a single meetup
+
   const meetupId = context.params.meetupId;
+
+  console.log(meetupId);
 
   return {
     props: {
-      meetupDate: {
+      meetupData: {
         image:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/1280px-Stadtbild_M%C3%BCnchen.jpg",
         id: meetupId,
